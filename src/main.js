@@ -3,13 +3,20 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-
+import store from '@/store/app'
+// icon
+import Icon from 'vue-awesome'
+Vue.component('icon', Icon)
 Vue.config.productionTip = false
+
+// iconfont
+
 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
+  store,
   template: '<App/>',
   components: { App }
 })

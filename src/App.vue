@@ -1,23 +1,32 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
+    <transition keep-alive>
+      <router-view />
+    </transition>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'app'
+  name: 'app',
+  data: () => ({
+    transitionName: 'slide-left'
+  })
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+@import 'assets/icon/iconfont.css';
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  // text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  max-width: 768px;
+  overflow-x: hidden; 
+  height: 100%;
+  margin: 0 auto;
+  position: relative;
 }
 </style>

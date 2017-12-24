@@ -3,10 +3,32 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
+		<meta name="full-screen" content="yes">
+		<meta name="x5-fullscreen" content="true">
+		<meta name="apple-mobile-web-app-capable" content="yes" />
     <title>cloudmusics</title>
+    <style type="text/css" href="./src/assets/css/layout.css"></style>
+    <style type="text/css">
+    	*{margin: 0; padding: 0}
+    	html{height: 100%;font-size: 20px}
+    	body{height: 100%; min-height: 100%}
+    </style>
   </head>
   <body>
     <div id="app"></div>
     <!-- built files will be auto injected -->
   </body>
 </html>
+<!-- <script type="text/javascript">
+window.addEventListener('mousedown', function (){
+    var documentElement = document.documentElement;  
+    if (documentElement.requestFullscreen) {  
+        documentElement.requestFullscreen();  
+    } else if (documentElement.mozRequestFullScreen) {  
+        documentElement.mozRequestFullScreen();  
+    } else if (documentElement.webkitRequestFullScreen) {  
+        documentElement.webkitRequestFullScreen();  
+    }
+});
+</script>
+ -->
