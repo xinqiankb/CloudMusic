@@ -15,8 +15,8 @@
 	    	position: absolute;
 	    	width:100%;
 	    	left: 0;
-	    	transition: all .8s cubic-bezier(.55,0,.1,1);
-	    	overflow-x: hidden; 
+	    	transition: all .4s cubic-bezier(.55,0,.1,1);
+	    	overflow: hidden; 
 	  	}
 	  	.slide-left-enter, .slide-right-leave-active {
 	   		opacity: 0;

@@ -5,7 +5,7 @@
   "author": "xinqian <kangbo_1991@126.com>",
   "private": true,
   "scripts": {
-    "dev": "webpack-dev-server --inline --host 192.168.1.144 --progress --config build/webpack.dev.conf.js",
+    "dev": "webpack-dev-server --inline --host 192.168.2.103 --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
     "build": "node build/build.js"
   },

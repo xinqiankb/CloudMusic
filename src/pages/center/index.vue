@@ -18,7 +18,12 @@
 	#index{
 		height: calc(100% - 60px);
 		.slideBar{
+			position: fixed;
+			top: 60px;
+			left: 0px;
 			padding: 0 1.2rem;
+			background-color: #fff;
+			z-index: 13;
 			.menuBtn{
 				display: table-cell;
 				width: 1%;
@@ -37,10 +42,12 @@
 	    .window {
 	    	position: absolute;
 	    	width:100%;
-	    	height: 100%;
+	    	height: 1000px;
+	    	top: 1.9rem;
 	    	left: 0;
-	    	transition: all .8s cubic-bezier(.55,0,.1,1);
-	    	overflow-x: hidden; 
+	    	transition: all .5s cubic-bezier(.55,0,.1,1);
+	    	overflow: hidden; 
+	    	z-index: 11;
 	  	}
 	  	.slide-left-enter, .slide-right-leave-active {
 	   		opacity: 0;
@@ -76,6 +83,11 @@
 	    	this.$router.isBack = false
 	    	next()
 	  	},
+	  	// mounted() {
+	  	// 	let app = document.querySelector('.window')
+	  	// 	let cHeight = app.clientHeight
+	  	// 	console.log(cHeight)
+	  	// },
 		methods: {
 			goBack() {
 				this.$router.goBack()

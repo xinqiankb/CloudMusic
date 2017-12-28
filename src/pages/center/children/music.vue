@@ -1,5 +1,5 @@
 <template>
-	<div class="" id="music">
+	<div class="" id="music" :style="'transform: translateY('+ translateDis +'px);transition: all 0.3s ease-out;'">
 		<div class="carsouel">
 			<div class="carsouelBox" @touchstart="touchstart($event)" @touchmove="touchmove($event)" @touchend="touchend" :style="'width:' + carsouelWidth + 'px;margin-left: -' + slidedis + 'px'">
 				<div class="slideitem" :style="'width:' + carsouelPicWidth + 'px'" v-for="(item, index) in banner">
@@ -54,6 +54,10 @@
 <style lang="scss" scoped>
 	$color: #d43c33;
 	#music{
+		transform-origin: center top;
+		-webkit-transform-origin: center top;
+		-moz-transform-origin: center top;
+		-o-transform-origin: center top;
 		.carsouel{
 			height: 8rem;
 			position: relative;
@@ -175,6 +179,8 @@ export default{
 		touchx1: '',
 		touchx2: '',
 		activitedIndex: 0,
+		translateDis: 0, // 页面滚动
+		scrollDis: 0,
 		// 定时器
 		timer: '',
 		banner: [
@@ -190,12 +196,67 @@ export default{
 		]
 	}),
 	mounted() {
+		let that = this
 		let swdith = window.screen.width
 		let length = this.banner.length
 		this.carsouelWidth = length * swdith
 		this.carsouelPicWidth = swdith
 		// autoSlide
 		this.autoSlide(4000)
+		// transelate
+		let X1 = 0
+		let X2 = 0
+		let app = document.querySelector('#music')
+		let cHeight = app.offsetHeight
+		let windowHeight = window.screen.height
+		let cTop = app.offsetTop
+		let scrollTop = app.scrollTop
+		// console.log(cHeight,cTop)
+		app.addEventListener('touchstart', function(e) {
+			// console.log(e)
+			e.preventDefault()
+			X1 = e.targetTouches[0].pageY
+			// console.log(X1 + 's')
+		})
+		app.addEventListener('touchmove', function(e) {
+			e.preventDefault()
+			X2 = e.targetTouches[0].pageY
+			// console.log(X2)
+			// console.log(X2)
+		})
+		app.addEventListener('touchend', function(e) {
+			let temp = 0;
+			// console.log(e)
+			let cTop = app.offsetTop
+			let movedis = X2 - X1
+			console.log(movedis)
+			let translateDis = Math.abs(movedis)
+			if (movedis > 0) {
+				// temp = windowHeight
+				// that.scrollDis -= translateDis
+				// if (that.scrollDis <= 0) {
+				// 	console.log(111)
+				// 	translateDis = 0
+				// 	that.scrollDis = 0
+				// }
+				translateDis = that.translateDis / 30
+				if (translateDis < 30) {
+					translateDis = 0
+				}
+				that.translateDis = translateDis
+			}
+			if (movedis < 0) {
+				temp = cHeight - 60 - windowHeight
+				that.scrollDis += translateDis
+				if (that.scrollDis > temp) {
+					console.log(2222)
+					translateDis = temp
+					that.scrollDis = temp
+				}
+				that.translateDis = -translateDis
+			}
+			console.log(that.scrollDis, translateDis)
+		})
 	},
 	methods: {
 		// carsuoel event
